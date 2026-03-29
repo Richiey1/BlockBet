@@ -51,6 +51,9 @@ export const metadata: Metadata = {
     { media: "(prefers-color-scheme: light)", color: "#000000" },
     { media: "(prefers-color-scheme: dark)", color: "#000000" },
   ],
+  other: {
+    "talentapp:project_verification": "4973ef29e148f19c63b948f1ea3900f289b641ecbde3140a9f0b32c5df8daca90c1ddbe1937b26c5b86e0b886e723785e3603705f6f1f81a176ecaa92e12287e",
+  },
 };
 
 export default function RootLayout({
