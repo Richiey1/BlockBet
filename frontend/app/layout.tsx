@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Press_Start_2P } from "next/font/google";
+import { Press_Start_2P, Space_Mono } from "next/font/google";
 import { StacksProvider } from "@/contexts/StacksProvider";
 import { Navbar } from "@/components/common/Navbar";
 import { Toaster } from "react-hot-toast";
@@ -13,9 +13,44 @@ const pressStart2P = Press_Start_2P({
   variable: "--font-press-start-2p",
 });
 
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  variable: "--font-space-mono",
+});
+
 export const metadata: Metadata = {
-  title: "StacksTacToe - Decentralized Tic-Tac-Toe",
-  description: "Play Tic-Tac-Toe on the Stacks blockchain",
+  title: {
+    default: "StacksTacToe — Bitcoin Tic-Tac-Toe Arena",
+    template: "%s | StacksTacToe",
+  },
+  description:
+    "Play decentralized Tic-Tac-Toe on Stacks L2. Bet STX, challenge opponents, win on-chain. Provably fair, Bitcoin-secured PvP gaming.",
+  keywords: ["Stacks", "Bitcoin", "tic-tac-toe", "game", "PvP", "betting", "blockchain", "L2", "DeFi"],
+  authors: [{ name: "StacksTacToe Protocol" }],
+  creator: "StacksTacToe",
+  openGraph: {
+    title: "StacksTacToe — Bitcoin Tic-Tac-Toe Arena",
+    description: "Bet STX. Challenge opponents. Win on-chain. Bitcoin-secured PvP gaming on Stacks L2.",
+    type: "website",
+    siteName: "StacksTacToe",
+    images: [{ url: "/logo.svg", width: 64, height: 64, alt: "StacksTacToe Logo" }],
+  },
+  twitter: {
+    card: "summary",
+    title: "StacksTacToe — Bitcoin Tic-Tac-Toe Arena",
+    description: "Decentralized Tic-Tac-Toe on Stacks L2. Bet STX, play opponents, win Bitcoin-secured prizes.",
+    images: ["/logo.svg"],
+  },
+  icons: {
+    icon: "/favicon.svg",
+    apple: "/logo.svg",
+    shortcut: "/favicon.svg",
+  },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#000000" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
 };
 
 export default function RootLayout({
@@ -26,7 +61,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${pressStart2P.variable} antialiased bg-black min-h-screen`}
+        className={`${pressStart2P.variable} ${spaceMono.variable} antialiased bg-black min-h-screen`}
         suppressHydrationWarning
       >
         <Providers>

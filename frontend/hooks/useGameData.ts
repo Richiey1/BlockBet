@@ -175,6 +175,8 @@ export function useLeaderboard() {
         );
 
         const statsResponses = await Promise.all(statsPromises);
+
+        const leaderboard = statsResponses.map((response, index) => {
           const statsData = cvToValue(response);
           const onChainStats = statsData?.value || {};
           const localStats = playerStatsMap.get(playerAddresses[index])!;
