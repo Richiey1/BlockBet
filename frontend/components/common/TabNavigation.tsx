@@ -1,8 +1,8 @@
 "use client";
 
-import { Gamepad2, PlusCircle, Crown, User, Settings } from "lucide-react";
+import { Gamepad2, PlusCircle, Crown, User, Settings, Search } from "lucide-react";
 
-export type TabType = "games" | "create" | "leaderboard" | "challenges" | "admin";
+export type TabType = "games" | "create" | "leaderboard" | "challenges" | "verify" | "admin";
 
 interface TabNavigationProps {
   activeTab: TabType | null;
@@ -16,6 +16,7 @@ export function TabNavigation({ activeTab, onTabChange, showAdmin = false }: Tab
     { id: "create", label: "Create", icon: PlusCircle },
     { id: "leaderboard", label: "Leaderboard", icon: Crown },
     { id: "challenges", label: "Players Profile", icon: User },
+    { id: "verify", label: "Verify Game", icon: Search },
   ];
 
   if (showAdmin) {

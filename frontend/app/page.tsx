@@ -8,6 +8,7 @@ import { GamesContent } from "@/components/common/GamesContent";
 import { CreateGameContent } from "@/components/common/CreateGameContent";
 import { LeaderboardContent } from "@/components/common/LeaderboardContent";
 import { PlayerProfileContent } from "@/components/common/PlayerProfileContent";
+import { VerifyGameContent } from "@/components/common/VerifyGameContent";
 import { AdminPanel } from "@/components/admin/AdminPanel";
 import { TabType } from "@/components/common/TabNavigation";
 import { useStacks } from "@/contexts/StacksProvider";
@@ -75,6 +76,7 @@ function HomeContent() {
                   {activeTab === "create" && <CreateGameContent />}
                   {activeTab === "leaderboard" && <LeaderboardContent />}
                   {activeTab === "challenges" && <PlayerProfileContent />}
+                  {activeTab === "verify" && <VerifyGameContent />}
                   {activeTab === "admin" && isAdmin && <AdminPanel />}
                 </>
               )}
