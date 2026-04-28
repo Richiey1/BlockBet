@@ -32,9 +32,10 @@ describe("StacksTacToe Game Contract - STX Only", () => {
       expect(result).toBeOk(Cl.bool(true));
       
       const gameRes = simnet.callReadOnlyFn(CONTRACT_NAME, "get-game", [Cl.uint(0)], alice);
-      expect(gameRes.result).toBeOk();
-      const val: any = gameRes.result;
-      expect(val.value).toBeSome();
+      // Explicitly check for ResponseOk and Some
+      expect(gameRes.result.type).toBe(Cl.ok(Cl.uint(0)).type);
+      const val = (gameRes.result as any).value;
+      expect(val.type).toBe(Cl.some(Cl.uint(0)).type);
     });
   });
 
@@ -52,9 +53,10 @@ describe("StacksTacToe Game Contract - STX Only", () => {
 
       expect(result).toBeOk(Cl.bool(true));
       const gameRes = simnet.callReadOnlyFn(CONTRACT_NAME, "get-game", [Cl.uint(0)], alice);
-      expect(gameRes.result).toBeOk();
-      const val: any = gameRes.result;
-      expect(val.value).toBeSome();
+      // Explicitly check for ResponseOk and Some
+      expect(gameRes.result.type).toBe(Cl.ok(Cl.uint(0)).type);
+      const val = (gameRes.result as any).value;
+      expect(val.type).toBe(Cl.some(Cl.uint(0)).type);
     });
   });
 
