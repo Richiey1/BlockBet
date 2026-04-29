@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Search, Loader2, Gamepad2, Trophy } from "lucide-react";
-import { fetchCallReadOnlyFunction, uintCV, cvToJSON } from "@stacks/transactions";
+import { fetchCallReadOnlyFunction, uintCV, cvToJSON, cvToValue } from "@stacks/transactions";
 import { CONTRACT_ADDRESS, CONTRACT_NAME, NETWORK } from "@/lib/stacksConfig";
 import Link from "next/link";
 
