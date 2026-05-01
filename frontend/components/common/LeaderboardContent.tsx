@@ -46,7 +46,7 @@ export function LeaderboardContent() {
       currentStreak: 0,
       bestStreak: 0,
     };
-  }).filter((player) => player.wins > 0);
+  }); // Removed the .filter(p => p.wins > 0) to ensure the leaderboard is never completely empty
 
   const formatEarnings = (val: number) => {
     return val.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 7 });
@@ -129,7 +129,7 @@ export function LeaderboardContent() {
           </div>
 
           <div className="divide-y divide-white/10 border-4 border-white/10 bg-white/5">
-            {sortedPlayers.length > 0 ? sortedPlayers.slice(0, 10).map((player, index) => (
+            {sortedPlayers.length > 0 ? sortedPlayers.slice(0, 15).map((player, index) => (
               <div
                 key={player.address}
                 className="flex items-center justify-between p-6 font-pixel hover:bg-white/5 transition-colors cursor-pointer"

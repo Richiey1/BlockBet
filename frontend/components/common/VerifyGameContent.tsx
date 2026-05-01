@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { Search, Loader2, Gamepad2, Trophy } from "lucide-react";
-import { fetchCallReadOnlyFunction, uintCV, cvToJSON, cvToValue } from "@stacks/transactions";
+import { fetchCallReadOnlyFunction, uintCV, cvToJSON } from "@stacks/transactions";
 import { CONTRACT_ADDRESS, CONTRACT_NAME, NETWORK } from "@/lib/stacksConfig";
+import { formatStx } from "@/lib/gameUtils";
 import Link from "next/link";
 
 const STATUS_LABELS: Record<number, string> = {
@@ -129,11 +130,12 @@ export function VerifyGameContent() {
           <div className="flex items-center justify-between">
             <h3 className="font-pixel text-xl text-orange-500">GAME #{game.id}</h3>
             <span className={`font-pixel text-xs px-3 py-1 border-2 ${
+              game.status === 0 && !game.playerTwo ? "border-yellow-500 text-yellow-400" :
               game.status === 0 ? "border-green-500 text-green-400" :
               game.status === 1 ? "border-gray-500 text-gray-400" :
               "border-red-500 text-red-400"
             }`}>
-              {STATUS_LABELS[game.status] ?? "UNKNOWN"}
+              {game.status === 0 && !game.playerTwo ? "WAITING" : STATUS_LABELS[game.status] ?? "UNKNOWN"}
             </span>
           </div>
 
@@ -154,7 +156,7 @@ export function VerifyGameContent() {
             </div>
             <div>
               <p className="text-gray-500 font-pixel text-xs uppercase">Bet Amount</p>
-              <p className="text-orange-500 font-pixel">{game.betAmount} uSTX</p>
+              <p className="text-orange-500 font-pixel">{formatStx(game.betAmount)} STX</p>
             </div>
             <div>
               <p className="text-gray-500 font-pixel text-xs uppercase">Moves Made</p>
