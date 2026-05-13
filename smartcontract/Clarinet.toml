@@ -1,14 +1,14 @@
 [project]
-name = 'stackstactoe'
-description = 'Decentralized Tic-Tac-Toe game on Stacks blockchain'
+name = 'BlockBet'
+description = 'Real-time on-chain prediction game on Stacks blockchain'
 authors = []
 telemetry = true
 cache_dir = './.cache'
 
-[contracts.stackstactoe-alpha]
-path = 'contracts/stackstactoe.clar'
-clarity_version = 3
-epoch = 'latest'
+[contracts.blockbet]
+path = 'contracts/blockbet.clar'
+clarity_version = 4
+epoch = '3.3'
 
 [repl.analysis]
 passes = ['check_checker']
@@ -22,5 +22,3 @@ callee_filter = false
 [repl.remote_data]
 enabled = false
 api_url = 'https://api.hiro.so'
-
-
