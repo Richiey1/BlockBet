@@ -1,18 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { Press_Start_2P, Space_Mono } from "next/font/google";
+import { Space_Mono, Inter } from "next/font/google";
 import { StacksProvider } from "@/contexts/StacksProvider";
-import { Navbar } from "@/components/common/Navbar";
+import { Navbar } from "@/components/Navbar";
 import { Toaster } from "react-hot-toast";
 import { Providers } from "@/components/Providers";
 import { ReownProvider } from "@/contexts/ReownProvider";
 import "./globals.css";
 
-const pressStart2P = Press_Start_2P({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-press-start-2p",
-});
-
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceMono = Space_Mono({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -20,44 +15,38 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://stackstactoe.vercel.app'),
+  metadataBase: new URL('https://blockbet.vercel.app'),
   title: {
-    default: "StacksTacToe — Bitcoin Tic-Tac-Toe Arena",
-    template: "%s | StacksTacToe",
+    default: "BlockBet — Predict the Chain",
+    template: "%s | BlockBet",
   },
   description:
-    "Play decentralized Tic-Tac-Toe on Stacks L2. Bet STX, challenge opponents, win on-chain. Provably fair, Bitcoin-secured PvP gaming.",
-  keywords: ["Stacks", "Bitcoin", "tic-tac-toe", "game", "PvP", "betting", "blockchain", "L2", "DeFi"],
-  authors: [{ name: "StacksTacToe Protocol" }],
-  creator: "StacksTacToe",
+    "Real-time on-chain prediction game. Stake STX on verifiable blockchain behavior and win proportionally from the pool.",
+  keywords: ["Stacks", "Bitcoin", "Prediction Market", "Gaming", "BlockBet", "Blockchain", "L2", "DeFi"],
+  authors: [{ name: "BlockBet Protocol" }],
+  creator: "BlockBet",
   openGraph: {
-    title: "StacksTacToe — Bitcoin Tic-Tac-Toe Arena",
-    description: "Bet STX. Challenge opponents. Win on-chain. Bitcoin-secured PvP gaming on Stacks L2.",
+    title: "BlockBet — Predict the Chain",
+    description: "Stake STX on verifiable blockchain behavior and win proportionally from the pool.",
     type: "website",
-    siteName: "StacksTacToe",
-    images: [{ url: "/logo.svg", width: 64, height: 64, alt: "StacksTacToe Logo" }],
+    siteName: "BlockBet",
+    images: [{ url: "/blockbet-logo.png", width: 512, height: 512, alt: "BlockBet Logo" }],
   },
   twitter: {
-    card: "summary",
-    title: "StacksTacToe — Bitcoin Tic-Tac-Toe Arena",
-    description: "Decentralized Tic-Tac-Toe on Stacks L2. Bet STX, play opponents, win Bitcoin-secured prizes.",
-    images: ["/logo.svg"],
+    card: "summary_large_image",
+    title: "BlockBet — Predict the Chain",
+    description: "Real-time on-chain prediction game on Stacks L2.",
+    images: ["/blockbet-logo.png"],
   },
   icons: {
     icon: "/favicon.svg",
-    apple: "/logo.svg",
+    apple: "/blockbet-logo.png",
     shortcut: "/favicon.svg",
-  },
-  other: {
-    "talentapp:project_verification": "4973ef29e148f19c63b948f1ea3900f289b641ecbde3140a9f0b32c5df8daca90c1ddbe1937b26c5b86e0b886e723785e3603705f6f1f81a176ecaa92e12287e",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#000000" },
-    { media: "(prefers-color-scheme: dark)", color: "#000000" },
-  ],
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -68,24 +57,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${pressStart2P.variable} ${spaceMono.variable} antialiased bg-black min-h-screen`}
+        className={`${inter.variable} ${spaceMono.variable} antialiased bg-black min-h-screen`}
         suppressHydrationWarning
       >
         <Providers>
           <ReownProvider>
             <StacksProvider>
               <Navbar />
-              <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 font-pixel text-gray-300">
-                {children}
-              </div>
+              {children}
               <Toaster position="top-right" 
                 toastOptions={{
                   style: {
-                    fontFamily: 'var(--font-press-start-2p)',
-                    borderRadius: '0px',
-                    border: '2px solid #F97316',
+                    borderRadius: '12px',
+                    border: '1px solid #F97316',
                     background: '#000',
                     color: '#fff',
+                    fontFamily: 'var(--font-inter)',
                   }
                 }}
               />
